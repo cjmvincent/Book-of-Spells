@@ -1,0 +1,9 @@
+Test-netconnection -ComputerName "filewave.bryan.k12.ga.us" -port 20005
+Test-netconnection -ComputerName "filewave.bryan.k12.ga.us" -port 20006
+Test-netconnection -ComputerName "filewave.bryan.k12.ga.us" -port 20015
+Test-netconnection -ComputerName "filewave.bryan.k12.ga.us" -port 20016
+Test-netconnection -ComputerName "filewave.bryan.k12.ga.us" -port 20017
+Test-netconnection -ComputerName "filewave.bryan.k12.ga.us" -port 20030
+Test-netconnection -ComputerName "filewave.bryan.k12.ga.us" -port 20443
+Test-netconnection -ComputerName "filewave.bryan.k12.ga.us" -port 20445
+Test-netconnection -ComputerName "filewave.bryan.k12.ga.us" -port 443

@@ -1,0 +1,1 @@
+netsh wlan del filter permission=denyall networktype=adhoc

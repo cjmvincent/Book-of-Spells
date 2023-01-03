@@ -1,0 +1,1 @@
+﻿$flashDrive = (Get-WmiObject -Class Win32_LogicalDisk | Where-Object {$_.volumename -eq "Book of Shadows"}).DeviceID
