@@ -1,7 +1,7 @@
 $names = @("cvincent","swilliams")
 
 $Global:Data = @()
-Function Find_Stupid_Gateways ($Server){
+Function Find_DeviceNames ($Server){
     
     $All_IPs = Get-DhcpServerv4Scope -ComputerName $Server | Get-DhcpServerv4Lease -ComputerName $Server
     ForEach($IP in $All_IPs){
@@ -17,7 +17,7 @@ Function Find_Stupid_Gateways ($Server){
         }
     }
 }
-Find_Stupid_Gateways -Server "bcboe-fs2"
-Find_Stupid_Gateways -Server "bcboe-fs3"
+Find_DeviceNames -Server "bcboe-fs2"
+Find_DeviceNames -Server "bcboe-fs3"
 $Global:Data |Format-Table -AutoSize
 #$Global:Data | Out-File -FilePath C:\temp\trash.csv
