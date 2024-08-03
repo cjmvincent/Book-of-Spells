@@ -7,7 +7,7 @@ $addresses = @(
 
 $Global:Data = @()
 
-Function Find_Stupid_Gateways ($Server){
+Function Find_MACs ($Server){
     
     $All_IPs = Get-DhcpServerv4Scope -ComputerName $Server | Get-DhcpServerv4Lease -ComputerName $Server
     ForEach($IP in $All_IPs){
@@ -30,7 +30,7 @@ $servers = @(
 )
 
 foreach ($server in $servers) {
-Find_Stupid_Gateways -Server $server
+Find_MACs -Server $server
 }
 
 $Global:Data |Format-Table -AutoSize
