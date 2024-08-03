@@ -1,3 +1,10 @@
-﻿Import-Module ActiveDirectory 
+﻿Import-Module ActiveDirectory
 
-New-ADGroup -Name "Test_A3" -SamAccountName Test_A3 -GroupCategory Security -GroupScope Global -DisplayName "Test A3" -Path "OU=Groups,OU=staff,DC=cjmvincent,DC=com"
+$Name = "Test"
+$DisplayName = "Test" 
+$SamAccountName = "Test"
+$GroupCat = "Security"
+$Scope = "Global"
+$Path = "OU=Groups,OU=staff,DC=cjmvincent,DC=com"
+
+New-ADGroup -Name $Name -SamAccountName $SamAccountName -GroupCategory $GroupCat -GroupScope $Scope -DisplayName $DisplayName -Path $Path

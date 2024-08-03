@@ -1,7 +1,9 @@
 ﻿Import-Module ActiveDirectory
 
-$usersToDisable = Import-Csv -Path c:/users/$env:Username/desktop/DisableUsers.csv
+$Path = "C:\temp\"
+$File = "Users.csv"
+$UsersToDisable = Import-Csv -Path "$Path\$File"
 
-ForEach ($User in $usersToDisable) {
-    Disable-ADAccount -Identity $user.Username
+ForEach ($User in $UsersToDisable) {
+    Disable-ADAccount -Identity $User.Username
 }

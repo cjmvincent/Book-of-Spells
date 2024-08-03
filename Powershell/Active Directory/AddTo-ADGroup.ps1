@@ -1,4 +1,12 @@
 ﻿Import-Module ActiveDirectory 
 
-#Add Users
-Import-Csv -Path 'C:\Temp\users.csv' | ForEach-Object { Add-ADGroupMember -Identity “ESports_Allow” -Members $_.'username' }
+$Path = "C:\temp\"
+$File = "Users.csv"
+$Users = Import-Csv -Path "$Path\$File"
+$Group = "ESports_Allow"
+
+ForEach ($User in $Users) {
+
+    Add-ADGroupMember -Identity $Group -Members $_.'username'
+
+}
