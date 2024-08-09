@@ -15,6 +15,9 @@ Function Find_MACs ($Server){
     $All_IPs = Get-DhcpServerv4Scope -ComputerName $Server | Get-DhcpServerv4Lease -ComputerName $Server
     ForEach($IP in $All_IPs){
         ForEach ($address in $addresses){
+
+            Write-Host "Looking for $($address)"
+
             If ($IP.ClientID -like "$address"){
                 #Be sure to create your template excel file with the needed headers you see below
                 $Device = [PSCustomObject]@{
