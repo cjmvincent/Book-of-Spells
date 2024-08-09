@@ -18,7 +18,7 @@ Function Find_MACs ($Server){
             If ($IP.ClientID -like "$address"){
                 #Be sure to create your template excel file with the needed headers you see below
                 $Device = [PSCustomObject]@{
-                    Hostname = $IP.Hostname;
+                    HostName = $IP.HostName;
                     ClientID = $IP.ClientID;
                     IPAddress = $IP.IPAddress
                 }
