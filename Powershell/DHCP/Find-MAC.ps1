@@ -4,9 +4,15 @@ $addresses = @(
     "00-18-85-52-fc-df"
 )
 
-$Path = "C:\temp"
-$File = "devices.xlsx"
-$Sheet = "Sheet1"
+# $Input_Path = "C:\temp"
+# $Input_File = "addresses"
+# $Input_Sheet = "Sheet1"
+
+# $addresses = Import-Excel -Path $Input_Path\$Input_File -WorksheetName $Input_Sheet
+
+$Output_Path = "C:\temp"
+$Output_File = "devices.xlsx"
+$Output_Sheet = "Sheet1"
 
 $Global:Data = @()
 
@@ -16,7 +22,7 @@ Function Find_MACs ($Server){
     ForEach($IP in $All_IPs){
         ForEach ($address in $addresses){
 
-            Write-Host "Looking for $($address)"
+            Write-Host "Looking for your addresses"
 
             If ($IP.ClientID -like "$address"){
                 #Be sure to create your template excel file with the needed headers you see below
@@ -26,7 +32,7 @@ Function Find_MACs ($Server){
                     IPAddress = $IP.IPAddress
                 }
             #Append var to our spreadsheet for later use
-            $Device | Export-Excel -Path $Path\$File -WorksheetName $Sheet -Append
+            $Device | Export-Excel -Path $Output_Path\$Output_File -WorksheetName $Output_Sheet -Append
             #Pause momentarily so script doesn't run faster than the spreadsheet can be written to
             Start-Sleep -Milliseconds 500
             }
