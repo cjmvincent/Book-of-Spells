@@ -17,13 +17,13 @@ Function Find_MACs ($Server){
         ForEach ($address in $addresses){
             If ($IP.ClientID -like "$address"){
                 #Be sure to create your template excel file with the needed headers you see below
-                $device = [PSCustomObject]@{
+                $Device = [PSCustomObject]@{
                     Hostname = $IP.Hostname;
                     ClientID = $IP.ClientID;
                     IPAddress = $IP.IPAddress
                 }
             #Append var to our spreadsheet for later use
-            $Entry | Export-Excel -Path $Path\$File -WorksheetName $Sheet -Append
+            $Device | Export-Excel -Path $Path\$File -WorksheetName $Sheet -Append
             #Pause momentarily so script doesn't run faster than the spreadsheet can be written to
             Start-Sleep -Milliseconds 500
             }
