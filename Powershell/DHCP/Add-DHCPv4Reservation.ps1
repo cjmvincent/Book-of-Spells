@@ -1,4 +1,4 @@
-﻿Import-Module ActiveDirectory 
+﻿Import-Module -Name DHCPServer
 
 $dhcpserver = Read-Host -Prompt "Are you making a reservation for North or South Bryan?
 1. North Bryan

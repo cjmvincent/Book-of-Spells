@@ -1,4 +1,6 @@
-﻿$server = "bcboe-fs2"
+﻿Import-Module -Name DHCPServer
+
+$server = "bcboe-fs2"
 $option = "ntp server"
 $optionid = "042"
 

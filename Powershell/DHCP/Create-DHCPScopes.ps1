@@ -1,5 +1,7 @@
 ﻿#csv header format name;dhcpserver;startrange;endrange;subnetmask;scopeid;router
 
+Import-Module -Name DHCPServer
+
 $path = "C:\temp"
 $file = "dhcpscopes.xlsx" 
 $sheet = "Sheet1"
