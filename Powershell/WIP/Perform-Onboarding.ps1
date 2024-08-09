@@ -132,10 +132,10 @@ $bloatware = @(
 
 ### Install WinGet ###
 # Idea from this gist: https://gist.github.com/crutkas/6c2096eae387e544bd05cde246f23901
-$hasPackageManager = Get-AppxPackage -Name 'Microsoft.Winget.Source' | Select Name, Version
-$hasVCLibs = Get-AppxPackage -Name 'Microsoft.VCLibs.140.00.UWPDesktop' | Select Name, Version
-$hasXAML = Get-AppxPackage -Name 'Microsoft.UI.Xaml.2.7*' | Select Name, Version
-$hasAppInstaller = Get-AppxPackage -Name 'Microsoft.DesktopAppInstaller' | Select Name, Version
+$hasPackageManager = Get-AppxPackage -Name 'Microsoft.Winget.Source' | Select-Object Name, Version
+$hasVCLibs = Get-AppxPackage -Name 'Microsoft.VCLibs.140.00.UWPDesktop' | Select-Object Name, Version
+$hasXAML = Get-AppxPackage -Name 'Microsoft.UI.Xaml.2.7*' | Select-Object Name, Version
+$hasAppInstaller = Get-AppxPackage -Name 'Microsoft.DesktopAppInstaller' | Select-Object Name, Version
 $DesktopPath = [System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::Desktop)
 $errorlog = "$DesktopPath\winget_error.log"
 
@@ -216,7 +216,7 @@ function debloating {
     Write-Host -ForegroundColor Cyan "Removing bloatware..."
     Foreach ($blt in $bloatware) {
         $package = Get-AppxPackage -AllUsers $blt
-        if ($package -ne $null) {
+        if ($null -ne $package) {
             Write-Host -ForegroundColor Red "Removing: $blt"
             $package | Remove-AppxPackage
         } else {

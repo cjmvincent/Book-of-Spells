@@ -58,7 +58,7 @@ if ($FY -eq "11") { $year = "23" }
 if ($FY -eq "12") { $year = "24" }
 if ($FY -eq "13") { $year = "25" }
 
-$serialNumber = Get-WmiObject -Class Win32_BIOS | Select -ExpandProperty SerialNumber
+$serialNumber = Get-WmiObject -Class Win32_BIOS | Select-Object -ExpandProperty SerialNumber
 
 $computerName = $site + "-" + $year + "-" + $serialNumber
  
