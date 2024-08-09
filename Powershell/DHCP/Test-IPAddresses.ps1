@@ -20,7 +20,7 @@ foreach ( $device in $Devices ) {
         'ClientID' = $device.ClientID
     }
 
-    Write-Host "Testing $Device.HostName"
+    Write-Host "Testing $($Device.HostName)"
 
     if ( Test-Connection -ComputerName $Device.IPAddress -Count 1 -Quiet ) {
         $Device | Export-Excel -Path $Dest_Path\$Dest_File -WorksheetName $Reachable_Worksheet -Append
