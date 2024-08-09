@@ -1,7 +1,7 @@
 ﻿Import-Module importexcel
 
 $Source_Path = "C:\temp"
-$Source_File = "devices.xlsx"
+$Source_File = "device_ips.xlsx"
 $Source_Worksheet = "Sheet1"
 
 $Devices = Import-Excel -Path $Source_Path\$Source_File  -Worksheet $Source_Worksheet
@@ -20,24 +20,24 @@ foreach ( $device in $Devices ) {
         'ClientID' = $device.ClientID
     }
 
-    Write-Host "Testing $device.HostName"
+    Write-Host "Testing $Device.HostName"
 
-    if ( Test-Connection -ComputerName $device.IPAddress -Count 1 -Quiet ) {
+    if ( Test-Connection -ComputerName $Device.IPAddress -Count 1 -Quiet ) {
         $Device | Export-Excel -Path $Dest_Path\$Dest_File -WorksheetName $Reachable_Worksheet -Append
         #Pause momentarily so script doesn't run faster than the spreadsheet can be written to
         Start-Sleep -Milliseconds 500
-        $Reachable_IPs += $Device
+        #$Reachable_IPs += $Device
     } else {
         $Device | Export-Excel -Path $Dest_Path\$Dest_File -WorksheetName $Unreachable_Worksheet -Append
         #Pause momentarily so script doesn't run faster than the spreadsheet can be written to
         Start-Sleep -Milliseconds 500
-        $Unreachable_IPs += $Device
+        #$Unreachable_IPs += $Device
     }
 
 }
 
-Write-Host "These devices were reachable:"
-$Reachable_IPs | Format-Table -AutoSize
+# Write-Host "These devices were reachable:"
+# $Reachable_IPs | Format-Table -AutoSize
 
-Write-Host "These devices were not reachable:"
-$Unreachable_IPs | Format-Table -AutoSize
+# Write-Host "These devices were not reachable:"
+# $Unreachable_IPs | Format-Table -AutoSize

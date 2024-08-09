@@ -1,7 +1,7 @@
 ﻿Import-Module -Name DhcpServer
 
 #Server and scope to pull leases from
-$Scope = "10.5.32.0"
+$Scope = "10.5.33.0"
 $Server = "bcboe-fs2"
 
 #All leases from above set vars
@@ -10,7 +10,7 @@ $All_IPs = Get-DhcpServerv4Scope -ComputerName $Server -ScopeId $Scope | Get-Dhc
 #File to write results to
 $Path = "C:\temp"
 $File = "device_ips.xlsx"
-$Sheet = "Name"
+$Sheet = "Sheet1"
 
 Foreach ( $IP in $All_IPs ) {
 
@@ -21,8 +21,8 @@ Foreach ( $IP in $All_IPs ) {
 
         #Be sure to create a template excel file with the needed headers you see below
         'IPAddress' = $IP.IPAddress;
-        'ScopeId' = $IP.ScopeId;
-        'ClientId' = $IP.ClientId;
+        'ScopeID' = $IP.ScopeId;
+        'ClientID' = $IP.ClientId;
         'HostName' = $IP.HostName;
         'AddressState' = $IP.AddressState;
 
