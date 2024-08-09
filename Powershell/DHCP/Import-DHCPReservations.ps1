@@ -8,6 +8,6 @@ $sheet = "Sheet1"
 $reservations = Import-Excel -Path $path\$file -WorksheetName $sheet
 
 foreach ( $reservation in $reservations ) {
-    Write-Host "Creating reservation for $($reservation.name) $($reservation.mac)"
-    Add-DhcpServerv4Reservation -ComputerName $reservation.dhcpserver -ScopeId $reservation.scopeid -IPAddress $reservation.ipaddr -Name $reservation.name -ClientId $reservation.mac -Description $reservation.description
+    Write-Host "Creating reservation for $($reservation.Hostname) $($reservation.ClientID)"
+    Add-DhcpServerv4Reservation -ComputerName $reservation.DHCPServer -ScopeId $reservation.ScopeID -IPAddress $reservation.IPAddress -Name $reservation.Hostname -ClientId $reservation.ClientID -Description $reservation.Description
 }
