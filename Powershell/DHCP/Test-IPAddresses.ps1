@@ -11,14 +11,14 @@ $UnreachableIPs = @()
 
 foreach ( $device in $Devices ) {
 
-    $IP = $device.IPAddress
+    #$IP = $device.IPAddress
 
-    Write-Host "Testing $IP"
+    Write-Host "Testing $device.HostName"
 
-    if ( Test-Connection -ComputerName $IP -Count 1 -Quiet ) {
-        $ReachableIPs += $IP
+    if ( Test-Connection -ComputerName $device.IPAddress -Count 1 -Quiet ) {
+        $ReachableIPs += $device
     } else {
-        $UnreachableIPs += $IP
+        $UnreachableIPs += $device
     }
 }
 
