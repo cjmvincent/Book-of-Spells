@@ -89,7 +89,7 @@ $domainCred = Get-Credential -Message "Please enter credential's of a domain adm
 
 Add-Computer -DomainName bryan.k12.ga.us -OUPath $ou -Options JoinWithNewName -Credential $domainCred -LocalCredential $localCred -Force
 
-Write-Host "OU: "$ou
-Write-Host "Computer Name: "$computerName
+Write-Host "OU: $($ou)"
+Write-Host "Computer Name: $($computerName)"
 
 Write-Host "Please restart the device for changes to take effect."
