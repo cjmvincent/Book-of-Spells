@@ -1,7 +1,7 @@
 ﻿Import-Module importexcel
 
 $Source_Path = "C:\temp"
-$Source_File = "device_ips.xlsx"
+$Source_File = "named_devices.xlsx"
 $Source_Worksheet = "Sheet1"
 
 $Devices = Import-Excel -Path $Source_Path\$Source_File  -Worksheet $Source_Worksheet
