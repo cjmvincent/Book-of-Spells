@@ -7,6 +7,6 @@ $Group = "ESports_Allow"
 
 ForEach ($User in $Users) {
 
-    Add-ADGroupMember -Identity $Group -Members $_.'username'
+    Add-ADGroupMember -Identity $Group -Members $User.username
 
 }
