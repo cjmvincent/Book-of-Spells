@@ -2,4 +2,4 @@
 
 Reset-ComputerMachinePassword -Server dc.cjmvincent.com -Credential $creds
 
-Write-Host "Establishing domain trust with DC 'bcboe-dc1'."
+Write-Host "Establishing domain trust with DC 'cjmvincent.com'."

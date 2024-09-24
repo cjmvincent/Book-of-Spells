@@ -1,6 +1,6 @@
 ﻿Import-Module ActiveDirectory
 
-$computerList = Get-ADComputer -Filter * -SearchBase "OU=RHPS,OU=Workstations,DC=bryan,DC=k12,DC=ga,DC=us" | Select-Object -ExpandProperty name
+$computerList = Get-ADComputer -Filter * -SearchBase "OU=Workstations,DC=cjmvincent,DC=com" | Select-Object -ExpandProperty name
 $downComputers = @()
 
 ForEach ($computer in $computerList) {
