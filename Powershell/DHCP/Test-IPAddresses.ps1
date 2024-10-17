@@ -1,13 +1,13 @@
 ﻿Import-Module importexcel
 
 $Source_Path = "C:\temp"
-$Source_File = "named_devices.xlsx"
-$Source_Worksheet = "Sheet1"
+$Source_File = "dhcp_stuff.xlsx"
+$Source_Worksheet = "Hosts"
 
 $Devices = Import-Excel -Path $Source_Path\$Source_File  -Worksheet $Source_Worksheet
 
 $Dest_Path = "C:\temp"
-$Dest_File = "ip_output.xlsx"
+$Dest_File = "dhcp_stuff.xlsx"
 $Reachable_Worksheet = "Reachable"
 $Unreachable_Worksheet = "Unreachable"
 

@@ -1,4 +1,9 @@
-﻿$path = "C:\temp"
-$file = "dhcpexport.csv"
+﻿Import-Module -Name ImportExcel
 
-Get-DhcpServerv4Reservation -ComputerName bcboe-fs2 -ScopeId 10.11.0.0 | Export-CSV "$path\$file" -Encoding UTF8 -Force -NoTypeInformation
+$path = "C:\temp"
+$file = "dhcpexport.csv"
+$sheet = "Sheet1"
+$scopeID = ""
+$server =  ""
+
+Get-DhcpServerv4Reservation -ComputerName $server -ScopeId $scopeID | Export-CSV "$path\$file" -Encoding UTF8 -Force -NoTypeInformation

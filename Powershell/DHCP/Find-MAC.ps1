@@ -1,31 +1,27 @@
 ﻿Import-Module -Name DHCPServer
 
-$addresses = @(
-    "00-18-85-52-fc-df"
-)
+$Input_Path = "C:\temp"
+$Input_File = "search_input.xlsx"
+$Input_Sheet = "Sheet1"
 
-# $Input_Path = "C:\temp"
-# $Input_File = "addresses"
-# $Input_Sheet = "Sheet1"
-
-# $addresses = Import-Excel -Path $Input_Path\$Input_File -WorksheetName $Input_Sheet
+$addresses = Import-Excel -Path $Input_Path\$Input_File -WorksheetName $Input_Sheet
 
 $Output_Path = "C:\temp"
-$Output_File = "devices.xlsx"
+$Output_File = "search_output.xlsx"
 $Output_Sheet = "Sheet1"
 
 $Global:Data = @()
 
 Function Find_MACs ($Server){
 
+    Write-Host "Looking for your addresses..."
+
     $All_IPs = Get-DhcpServerv4Scope -ComputerName $Server | Get-DhcpServerv4Lease -ComputerName $Server
     ForEach($IP in $All_IPs){
         ForEach ($address in $addresses){
-
-            Write-Host "Looking for your addresses"
-
-            If ($IP.ClientID -like "$address"){
+            If ($IP.ClientID -like $address.ClientID){
                 #Be sure to create your template excel file with the needed headers you see below
+                Write-Host "Found $address.ClientID..."
                 $Device = [PSCustomObject]@{
                     HostName = $IP.HostName;
                     ClientID = $IP.ClientID;
@@ -46,8 +42,5 @@ $servers = @(
 )
 
 foreach ($server in $servers) {
-Find_MACs -Server $server
+    Find_MACs -Server $server
 }
-
-#$Global:Data |Format-Table -AutoSize
-#$Global:Data | Out-File -FilePath C:\temp\trash.csv
