@@ -9,8 +9,8 @@ $All_IPs = Get-DhcpServerv4Scope -ComputerName $Server -ScopeId $Scope | Get-Dhc
 
 #File to write results to
 $Path = "C:\temp"
-$File = "device_ips.xlsx"
-$Sheet = "Sheet1"
+$File = "dhcp_stuff.xlsx"
+$Sheet = "Leases"
 
 Foreach ( $IP in $All_IPs ) {
 

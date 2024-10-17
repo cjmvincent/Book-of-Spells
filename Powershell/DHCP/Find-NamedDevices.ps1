@@ -1,13 +1,13 @@
 Import-Module importexcel
 
 $Source_Path = "C:\temp"
-$Source_File = "device-test.xlsx"
+$Source_File = "dhcp_stuff.xlsx"
 $Source_Worksheet = "Hosts"
 
 $Names = Import-Excel -Path $Source_Path\$Source_File  -Worksheet $Source_Worksheet
 
 $Dest_Path = "C:\temp"
-$Dest_File = "device-test.xlsx"
+$Dest_File = "dhcp_stuff.xlsx"
 $Dest_Worksheet = "Found"
 
 $Global:Data = @()
