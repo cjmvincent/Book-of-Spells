@@ -16,7 +16,7 @@ Function Find_NamedDevices ($Server){
     $All_IPs = Get-DhcpServerv4Scope -ComputerName $Server | Get-DhcpServerv4Lease -ComputerName $Server
     ForEach($IP in $All_IPs){
         ForEach ($Name in $Names){
-            If ($IP.Hostname -like '*"$Name.HostName"*'){
+            If ($IP.Hostname -like "*$($Name.HostName)*"){
                 $Device = [PSCustomObject]@{
                     Hostname = $IP.Hostname;
                     ClientID = $IP.ClientID;
