@@ -19,6 +19,17 @@ Function Find_MACs ($Server){
     $All_IPs = Get-DhcpServerv4Scope -ComputerName $Server | Get-DhcpServerv4Lease -ComputerName $Server
     ForEach($IP in $All_IPs){
         ForEach ($address in $addresses){
+
+            If ($address.ClientID.length -eq 12){
+                $address.ClientID = $address.'ClientID'.insert(2,"-").insert(5,"-").insert(8,"-").insert(11,"-").insert(14,"-")
+            }
+            If ($address.ClientID -contains ":" ) {
+                $address.ClientID = '$address.ClientID'.Replace(':', '-')
+            }
+
+            # $address.ClientID = $address.ClientID -replace "[^A-Fa-f0-9]", ""
+            # $address.ClientID = $address.ClientID.insert(2,"-").insert(5,"-").insert(8,"-").insert(11,"-").insert(14,"-")
+
             If ($IP.ClientID -like $address.ClientID){
                 #Be sure to create your template excel file with the needed headers you see below
                 Write-Host "Found $address.ClientID..."
