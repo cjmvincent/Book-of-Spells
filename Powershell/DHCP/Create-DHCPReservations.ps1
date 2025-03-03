@@ -9,5 +9,5 @@ $addresses = Import-Excel -Path $Input_Path\$Input_File -WorksheetName $Input_Sh
 
 foreach ( $address in $addresses ) {
     Write-Host "Creating address for $($address.HostName) $($address.ClientID)"
-    Add-DhcpServerv4address -ComputerName $address.DHCPServer -ScopeId $address.ScopeID -IPAddress $address.IPAddress -Name $address.Hostname -ClientId $address.ClientID -Description $address.Description
+    Add-DhcpServerv4Reservation -ComputerName $address.DHCPServer -ScopeId $address.ScopeID -IPAddress $address.IPAddress -Name $address.Hostname -ClientId $address.ClientID -Description $address.Description
 }

@@ -30,6 +30,7 @@ Function Find_MACs ($Server){
             $address.ClientID = $address.'ClientID' -replace "[^A-Fa-f0-9]", ""
             $address.ClientID = $address.'ClientID' -replace '..(?!$)','$0-'
 
+
             If ($IP.ClientID -like $address.ClientID){
                 #Be sure to create your template excel file with the needed headers you see below
                 Write-Host "Found $($address.ClientID)..."
