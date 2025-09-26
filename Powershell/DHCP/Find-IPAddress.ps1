@@ -31,6 +31,9 @@ function Find-NamedDevices {
             $device = $DeviceMap[$ipString]
             $Global:Data += [PSCustomObject]@{
                 PrinterName = $device.PrinterName
+                Server = $device.Server
+                Driver = $device.Driver
+                PortName = $device.PortName
                 Hostname    = $IP.Hostname
                 ClientID    = $IP.ClientID
                 IPAddress   = $IP.IPAddress
