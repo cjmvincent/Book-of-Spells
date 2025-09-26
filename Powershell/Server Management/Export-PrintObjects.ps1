@@ -2,7 +2,7 @@ Import-Module -Name ImportExcel
 
 # File to write results to
 $Path = "C:\temp"
-$File = "dhcp_stuff.xlsx"
+$File = "dhcp.xlsx"
 $Sheet = "Printers"
 
 $servers = @('PRINT-SRVR', 'PRINT-SRVR-RH')
