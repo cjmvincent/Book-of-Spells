@@ -7,10 +7,10 @@ $Source_Worksheet = "Printers"
 # Load devices once
 $Devices = Import-Excel -Path "$Source_Path\$Source_File" -WorksheetName $Source_Worksheet
 
-# Create a HashSet of device IPs for fast lookup
-$DeviceIPs = [System.Collections.Generic.HashSet[string]]::new()
+# Create a dictionary keyed by IP address for fast lookup and access to PrinterName
+$DeviceMap = @{}
 foreach ($device in $Devices) {
-    $DeviceIPs.Add($device.IPAddress.ToString())
+    $DeviceMap[$device.IPAddress.ToString()] = $device
 }
 
 $Dest_Path = "C:\temp"
@@ -26,11 +26,14 @@ function Find-NamedDevices {
     $All_IPs = Get-DhcpServerv4Scope -ComputerName $Server | Get-DhcpServerv4Lease -ComputerName $Server
 
     foreach ($IP in $All_IPs) {
-        if ($DeviceIPs.Contains($IP.IPAddress.ToString())) {
+        $ipString = $IP.IPAddress.ToString()
+        if ($DeviceMap.ContainsKey($ipString)) {
+            $device = $DeviceMap[$ipString]
             $Global:Data += [PSCustomObject]@{
-                Hostname  = $IP.Hostname
-                ClientID  = $IP.ClientID
-                IPAddress = $IP.IPAddress
+                PrinterName = $device.PrinterName
+                Hostname    = $IP.Hostname
+                ClientID    = $IP.ClientID
+                IPAddress   = $IP.IPAddress
             }
         }
     }
@@ -47,5 +50,5 @@ foreach ($server in $servers) {
 
 # Write all matched results at once
 if ($Global:Data.Count -gt 0) {
-    $Global:Data | Export-Excel -Path "$Dest_Path\$Dest_File" -WorksheetName $Dest_Worksheet -ClearSheet
+    $Global:Data | Export-Excel -Path "$Dest_Path\$Dest_File" -WorksheetName $Dest_Worksheet -ClearSheet -AutoSize
 }
