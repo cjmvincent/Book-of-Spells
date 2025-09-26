@@ -1,7 +1,9 @@
+Import-Module -Name ImportExcel
+
 #File to write results to
 $Path = "C:\temp"
 $File = "dhcp_stuff.xlsx"
-$Sheet = "Leases"
+$Sheet = "Printers"
 
 $servers = @('PRINT-SRVR'
              'PRINT-SRVR-RH')
@@ -9,6 +11,8 @@ $servers = @('PRINT-SRVR'
 ForEach($server in $servers) {
 
     $printers = Get-Printer -ComputerName $server
+
+        Write-Host "Saving $print.Name"
 
         ForEach($printer in $printers) {
 
