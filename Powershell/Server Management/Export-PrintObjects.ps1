@@ -2,10 +2,10 @@ Import-Module -Name ImportExcel
 
 # File to write results to
 $Path = "C:\temp"
-$File = "dhcp.xlsx"
+$File = "printers.xlsx"
 $Sheet = "Printers"
 
-$servers = @('PRINT-SRVR', 'PRINT-SRVR-RH')
+$servers = @('PRINT-SRVR', 'PRINT-SRVR-RH', 'BCBOE-FS2', 'BCBOE-FS3')
 
 foreach ($server in $servers) {
     $printers = Get-Printer -ComputerName $server

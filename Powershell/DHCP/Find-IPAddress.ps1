@@ -1,7 +1,7 @@
 Import-Module ImportExcel
 
 $Source_Path = "C:\temp"
-$Source_File = "dhcp.xlsx"
+$Source_File = "printers.xlsx"
 $Source_Worksheet = "Printers"
 
 # Load devices once
@@ -14,8 +14,8 @@ foreach ($device in $Devices) {
 }
 
 $Dest_Path = "C:\temp"
-$Dest_File = "dhcp.xlsx"
-$Dest_Worksheet = "Found"
+$Dest_File = "printers.xlsx"
+$Dest_Worksheet = "Get-MACs"
 
 # Buffer results in memory
 $Global:Data = @()
