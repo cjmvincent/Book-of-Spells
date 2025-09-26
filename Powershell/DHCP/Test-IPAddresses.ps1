@@ -35,9 +35,3 @@ foreach ( $device in $Devices ) {
     }
 
 }
-
-# Write-Host "These devices were reachable:"
-# $Reachable_IPs | Format-Table -AutoSize
-
-# Write-Host "These devices were not reachable:"
-# $Unreachable_IPs | Format-Table -AutoSize
