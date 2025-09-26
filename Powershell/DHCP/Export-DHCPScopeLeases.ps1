@@ -1,8 +1,8 @@
 ﻿Import-Module -Name DhcpServer
 
 #Server and scope to pull leases from
-$Scope = "10.150.0.0"
-$Server = "10.8.0.31"
+$Scope = "10.2.34.0"
+$Server = "10.101.0.15"
 
 #All leases from above set vars
 $All_IPs = Get-DhcpServerv4Scope -ComputerName $Server -ScopeId $Scope | Get-DhcpServerv4Lease -ComputerName $Server
@@ -14,7 +14,7 @@ $Sheet = "Leases"
 
 Foreach ( $IP in $All_IPs ) {
 
-    #Write-Host "Processing $($IP.IPAddress)"
+    Write-Host "Processing $($IP.IPAddress)"
 
     #Create custom object to hold pertinent info
     $Entry = [PSCustomObject]@{
