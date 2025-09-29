@@ -1,14 +1,14 @@
 ﻿Import-Module -Name DHCPServer
 
 $Input_Path = "C:\temp"
-$Input_File = "dhcp_stuff.xlsx"
-$Input_Sheet = "Hosts"
+$Input_File = "printers.xlsx"
+$Input_Sheet = "Status"
 
 $addresses = Import-Excel -Path $Input_Path\$Input_File -WorksheetName $Input_Sheet
 
 $Output_Path = "C:\temp"
-$Output_File = "dhcp_stuff.xlsx"
-$Output_Sheet = "Found"
+$Output_File = "printers.xlsx"
+$Output_Sheet = "Get-MACs"
 
 $Global:Data = @()
 

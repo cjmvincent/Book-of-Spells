@@ -2,7 +2,7 @@ Import-Module ImportExcel
 
 $Source_Path = "C:\temp"
 $Source_File = "printers.xlsx"
-$Source_Worksheet = "Get-MACs"
+$Source_Worksheet = "Printers"
 
 $Dest_Path = "C:\temp"
 $Dest_File = "printers.xlsx"

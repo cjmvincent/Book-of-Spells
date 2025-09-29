@@ -2,7 +2,7 @@ Import-Module ImportExcel
 
 $Source_Path = "C:\temp"
 $Source_File = "printers.xlsx"
-$Source_Worksheet = "Printers"
+$Source_Worksheet = "Status"
 
 # Load devices once
 $Devices = Import-Excel -Path "$Source_Path\$Source_File" -WorksheetName $Source_Worksheet
@@ -37,6 +37,8 @@ function Find-NamedDevices {
                 Hostname    = $IP.Hostname
                 ClientID    = $IP.ClientID
                 IPAddress   = $IP.IPAddress
+                Status   = $device.Status
+                DHCPServer  = $Server
             }
         }
     }
