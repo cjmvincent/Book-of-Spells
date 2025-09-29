@@ -14,7 +14,6 @@ foreach ($server in $servers) {
     foreach ($printer in $printers) {
         Write-Host "Saving $($printer.Name)"
 
-        # Try to match port and extract IP
         $port = $ports | Where-Object { $_.Name -eq $printer.PortName }
 
         $entry = [pscustomobject]@{
