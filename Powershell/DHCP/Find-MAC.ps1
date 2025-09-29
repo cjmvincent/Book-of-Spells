@@ -1,14 +1,14 @@
 ﻿Import-Module -Name DHCPServer
 
 $Input_Path = "C:\temp"
-$Input_File = "printers.xlsx"
-$Input_Sheet = "Status"
+$Input_File = "dhcp_stuff.xlsx"
+$Input_Sheet = "Hosts"
 
 $addresses = Import-Excel -Path $Input_Path\$Input_File -WorksheetName $Input_Sheet
 
 $Output_Path = "C:\temp"
-$Output_File = "printers.xlsx"
-$Output_Sheet = "Get-MACs"
+$Output_File = "dhcp_stuff.xlsx"
+$Output_Sheet = "Found"
 
 $Global:Data = @()
 
@@ -20,16 +20,8 @@ Function Find_MACs ($Server){
     ForEach($IP in $All_IPs){
         ForEach ($address in $addresses){
 
-            # If ($address.ClientID -like "*:*" ) {
-            #     $address.ClientID = $address.'ClientID'.replace(':', '-')
-            # }
-            # If ($address.ClientID.length -eq 12){
-            #     $address.ClientID = $address.'ClientID' -replace '..(?!$)','$0-'
-            # }
-
             $address.ClientID = $address.'ClientID' -replace "[^A-Fa-f0-9]", ""
             $address.ClientID = $address.'ClientID' -replace '..(?!$)','$0-'
-
 
             If ($IP.ClientID -like $address.ClientID){
                 #Be sure to create your template excel file with the needed headers you see below
