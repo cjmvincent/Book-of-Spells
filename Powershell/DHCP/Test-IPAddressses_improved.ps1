@@ -13,7 +13,8 @@ $Devices = Import-Excel -Path "$Source_Path\$Source_File" -WorksheetName $Source
 $Results = @()
 
 foreach ($device in $Devices) {
-    Write-Host "Testing $($device.PrinterName) - $($device.IPAddress)"
+
+    #Write-Host "Testing $($device.PrinterName) - $($device.IPAddress)"
     
     $isOnline = Test-Connection -ComputerName $device.IPAddress -Count 1 -Quiet
 
@@ -22,7 +23,7 @@ foreach ($device in $Devices) {
         $props[$_.Name] = $_.Value
     }
 
-    $props["Status"] = if ($isOnline) { "Online" } else { "Offline" }
+    $props["NetworkStatus"] = if ($isOnline) { "Online" } else { "Offline" }
 
     $Results += [PSCustomObject]$props
 }
