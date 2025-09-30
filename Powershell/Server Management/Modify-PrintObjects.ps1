@@ -1,9 +1,8 @@
 Import-Module ImportExcel
 
-# File to write results to
 $Path = "C:\temp"
-$File = "dhcp_stuff.xlsx"
-$Sheet = "Printers"
+$File = "printers.xlsx"
+$Sheet = "Get-MACs"
 
 $printers = Import-Excel -Path $File\$Path -WorksheetName $Sheet
 
